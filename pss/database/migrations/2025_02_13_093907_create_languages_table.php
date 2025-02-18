@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('software', function (Blueprint $table) {
-            $table->id();
+        Schema::create('languages', function (Blueprint $table) {
+            $table->id('LID');
+            $table->integer('SORT');
+            $table->boolean('active')->nullable(false)->default(true);
             $table->string('name');
-            $table->string('description');
-            $table->string('type_software');
-            $table->string('area_setup');
+            $table->string('CODE');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('software');
+        Schema::dropIfExists('languages');
     }
 };

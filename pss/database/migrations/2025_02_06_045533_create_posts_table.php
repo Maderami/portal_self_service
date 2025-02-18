@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable(false);
+            $table->integer('sort');
+            $table->dateTime('active_start');
+            $table->dateTime('active_finish');
+            $table->foreignId('author_comment')->references('id')->on('comments');
+            $table->foreignId('employee_id')->references('id')->on('users');
+            $table->foreignId('file')->references('id')->on('files');
             $table->timestamps();
         });
     }

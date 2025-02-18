@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('cases', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('request_id')->references('id')->on('requests');
+            $table->foreignId('response_id')->references('id')->on('responses');
+            $table->foreignId('file_id')->references('id')->on('files');
             $table->timestamps();
         });
     }

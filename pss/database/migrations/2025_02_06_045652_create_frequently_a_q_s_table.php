@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('frequently_a_q_s', function (Blueprint $table) {
             $table->id();
+            $table->string('question');
+            $table->string('answer');
+            $table->foreignId('file_id')->references('id')->on('files');
             $table->timestamps();
         });
     }
