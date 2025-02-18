@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('software', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->float('width');
+            $table->float('height');
+            $table->float('file_size');
+            $table->string('file_type');
+            $table->string('sub_dir');
+            $table->string('file_name');
+            $table->string('original_name');
             $table->string('description');
-            $table->string('type_software');
-            $table->string('area_setup');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('software');
+        Schema::dropIfExists('files');
     }
 };

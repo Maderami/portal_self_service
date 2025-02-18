@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('event_name');
+            $table->string('message_id');
+            $table->string('c_fields');
+            $table->dateTime('date_insert');
+            $table->dateTime('date_exec');
+            $table->boolean('success_exec');
+            $table->boolean('duplicate');
+            $table->foreignId('language_id')->references('lid')->on('languages');
+            $table->timecstamps();
         });
     }
 

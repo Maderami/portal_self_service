@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('thread_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->foreignId('thread_id')->references('id')->on('threads');
             $table->timestamps();
         });
     }

@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('about_me');
+            $table->date('birth_day');
+            $table->string('gender')->nullable(false)->default('');
+            $table->string('city');
+            $table->string('country');
+            $table->string('around');
+            $table->string('work_area');
+            $table->string('time_zone');
+            $table->boolean('auto_time_zone')->default(false);
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('language_id')->references('lid')->on('languages');
             $table->timestamps();
         });
     }

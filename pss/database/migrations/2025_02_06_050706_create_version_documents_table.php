@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('software', function (Blueprint $table) {
+        Schema::create('versions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('document_id')->references('id')->on('documents');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('file_id')->references('id')->on('files');
             $table->string('name');
-            $table->string('description');
-            $table->string('type_software');
-            $table->string('area_setup');
+            $table->string('date_change');
+            $table->string('size_file');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('software');
+        Schema::dropIfExists('versions');
     }
 };

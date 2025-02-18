@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
+            $table->string('response');
+            $table->string('comment');
+            $table->foreignId('responsible_user')->references('id')->on('users');
+            $table->date('response_date');
+            $table->time('response_time');
             $table->timestamps();
         });
     }

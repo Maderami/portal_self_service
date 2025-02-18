@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
+            $table->string('request_name');
+            $table->string('request_description');
+            $table->string('status');
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');
+            $table->time('time_exec');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('type_id')->references('id')->on('request_types');
+            $table->foreignId('category_id')->references('id')->on('request_categories');
+            $table->foreignId('attendance_id')->references('id')->on('attendences');
             $table->timestamps();
         });
     }
